@@ -24,9 +24,7 @@ repositories {
     mavenCentral()
     jcenter()
 }
-test.onlyIf {
-    !project.hasProperty('test')
-}
+
 dependencies {
     implementation('org.springframework.boot:spring-boot-starter-web')
     implementation('org.projectlombok:lombok')
