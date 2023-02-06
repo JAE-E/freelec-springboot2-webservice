@@ -7,9 +7,7 @@ import lombok.Getter;
 
 import java.util.Map;
 
-// dto로 생각 !
-
-@Getter // 선언된 모든 필드의 get 메소드를 생성.
+@Getter
 public class OAuthAttributes {
     private Map<String, Object> attributes;
     private String nameAttributeKey;
@@ -26,7 +24,6 @@ public class OAuthAttributes {
         this.picture = picture;
     }
 
-    // of() => OAuth2User에서 반환하는 사용자 정보는 map이므로 값 하나하나를 변환해야만 합니다.
     public static OAuthAttributes of(String registrationId, String userNameAttributeName, Map<String, Object> attributes) {
         if("naver".equals(registrationId)) {
             return ofNaver("id", attributes);
@@ -57,7 +54,6 @@ public class OAuthAttributes {
                 .build();
     }
 
-    //User entitly를 생성합니다. // 엔티티생성 시점은 처음 가입시 // 가입할때의 기본 권한을 guest로 주기위해 role에 주입 //
     public User toEntity() {
         return User.builder()
                 .name(name)
@@ -67,4 +63,3 @@ public class OAuthAttributes {
                 .build();
     }
 }
-
